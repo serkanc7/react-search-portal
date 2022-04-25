@@ -1,0 +1,16 @@
+@import '../../assets/scss/variables';
+
+.search {
+    
+
+    &__input {
+        border-radius: 8px;
+        height: 48px;
+        width: 646px;
+        border: 2px solid $search-border-color;
+        margin-right: 11px;
+    }
+
+
+
+}

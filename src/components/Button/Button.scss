@@ -1,0 +1,17 @@
+@import '/src/assets/scss/variables';
+
+.add-button {
+    color: $btn-text-color;
+    background-color: $btn-bg-color;
+    padding: 10px 40px;
+    border-radius: 12px;
+    border: 1px solid $btn-border-color;
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 18px;
+
+    &:hover {
+        background-color: $btn-hover-bg-color;
+    }
+}
