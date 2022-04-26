@@ -1,0 +1,48 @@
+@import "../../assets/scss/variables";
+
+.list-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin: 10px;
+    padding: 10px;
+
+
+    &:not(:last-child):after {
+        padding-top: 10px;
+        content: "";
+        position: absolute;
+        left: 50%;
+        margin-left: -250px;
+        bottom: 0;
+        width: 500px;
+        border-bottom: 1px solid gray;
+    }
+    
+    &:hover{
+        background-color: $item-hover-bg-color;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 15px;
+    }
+
+    &__name{
+        font-size: 16px;
+        color: $item-dark-color;
+        margin: 0px;
+        margin-bottom: 4px;
+
+    }
+
+    &__location{
+        color: $item-light-color;
+        font-size: 14px;
+    }
+}

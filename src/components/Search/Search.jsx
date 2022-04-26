@@ -4,7 +4,7 @@ import mockData from "../../assets/json/mockData.json";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 
-function Search({ setRecords }) {
+function Search({ setRecords,setIsTwoLetters }) {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const data = mockData.data.map((item, i) => {
@@ -20,6 +20,12 @@ function Search({ setRecords }) {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
+    if(e.target.value.length >= 2){
+      console.log(e.target.value);
+      setIsTwoLetters(true);
+    }else{
+      setIsTwoLetters(false);
+    }
   };
 
   const handleSubmit = (e) => {

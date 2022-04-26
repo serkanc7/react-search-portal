@@ -1,11 +1,33 @@
-.news{
-    &__slider{
+.news {
+    &__slider {
         display: flex;
         align-items: center;
     }
 
-    &__container{
+    &__container {
         display: flex;
         overflow-x: scroll;
     }
+
+    &__btn {
+        border-radius: 30px;
+        border: none;
+        background-color: #EEEEEE;
+        cursor: pointer;
+
+        &-prev{
+            margin-right: 24px;
+        }
+
+        &-next{
+            margin-left: 24px;
+        }
+
+        img {
+            width: 48px;
+            height: 48px;
+        }
+    }
+
+
 }

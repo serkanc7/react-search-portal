@@ -12,12 +12,19 @@ function News() {
 
   const getWidth = () => {
     const newWidth = ref.current.clientWidth;
+    console.log(newWidth);
     setContWidth(newWidth);
   };
 
   useEffect(() => {
     getWidth();
+    window.addEventListener("load",getWidth);
     window.addEventListener("resize", getWidth);
+    return () => {
+      window.removeEventListener("load",getWidth);
+      window.removeEventListener("resize",getWidth);
+    };
+
   }, []);
 
  
@@ -29,7 +36,7 @@ function News() {
     <div className="news">
       <h2 className="news__title">Top News</h2>
       <div className="news__slider">
-        <button className="news__prev-btn">
+        <button className="news__btn news__btn-prev">
           <img src={prevBtn} alt="" />
         </button>
         <div ref={ref} className="news__container">
@@ -38,7 +45,7 @@ function News() {
           <NewsCard contWidth={contWidth}/>
           <NewsCard contWidth={contWidth}/>
         </div>
-        <button className="news__next-btn">
+        <button className="news__btn news__btn-next">
           <img src={nextBtn} alt="" />
         </button>
       </div>

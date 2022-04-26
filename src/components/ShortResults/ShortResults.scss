@@ -1,0 +1,20 @@
+@import "../../assets/scss/variables";
+
+.short-results{
+    border: 1px solid $results-border-color; 
+    border-radius: 24px;
+    padding: 20px 25px;
+    width: 720px;
+    margin-right: 150px;
+    margin-top: 15px;
+    
+
+    &__link{
+        color: $item-dark-color;
+        font-size: 16px;
+        font-weight: 700;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+    }
+}
