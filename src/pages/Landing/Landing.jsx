@@ -5,17 +5,18 @@ import Logo from "../../assets/img/logo.png";
 import Search from "../../components/Search/Search";
 import ShortResults from "../../components/ShortResults/ShortResults";
 import News from "../../components/News/News";
+import Footer from "../../components/Footer/Footer";
 
 function Landing({ records, setRecords }) {
 
   const [isTwoLetters, setIsTwoLetters] = useState(false);
 
   return (
-    <main className="landing container">
-      <div className="landing__button">
+    <main className="landing">
+      <div className="landing__button container">
         <Button buttonText="Add new record" />
       </div>
-      <div className="landing__container">
+      <div className="landing__container contaimer">
         <div className="landing__logo">
           <img className="landing__logo-img" src={Logo} alt="logo" />
           <div className="landing__logo-text">Search app</div>
@@ -25,6 +26,7 @@ function Landing({ records, setRecords }) {
         {isTwoLetters && records.length > 0 && <ShortResults records={records}/>}
       </div>
       <News />
+      <Footer/>
     </main>
   );
 }

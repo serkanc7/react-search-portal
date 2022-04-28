@@ -12,9 +12,10 @@ function News() {
 
   const getWidth = () => {
     const newWidth = ref.current.clientWidth;
-    console.log(newWidth);
     setContWidth(newWidth);
   };
+
+  
 
   useEffect(() => {
     getWidth();
@@ -27,25 +28,22 @@ function News() {
 
   }, []);
 
- 
-
-
+  const scroll = (offset) => {
+    ref.current.scrollLeft += offset;
+  }
 
 
   return (
-    <div className="news">
+    <div className="news container">
       <h2 className="news__title">Top News</h2>
       <div className="news__slider">
-        <button className="news__btn news__btn-prev">
-          <img src={prevBtn} alt="" />
+        <button className="news__btn news__btn-prev" onClick={() => scroll(-contWidth/3 - 20)} >
+          <img src={prevBtn} alt=""/>
         </button>
         <div ref={ref} className="news__container">
-          <NewsCard contWidth={contWidth}/>
-          <NewsCard contWidth={contWidth}/>
-          <NewsCard contWidth={contWidth}/>
-          <NewsCard contWidth={contWidth}/>
+          {[0,1,2,3].map((item) => (<NewsCard key={item} padding contWidth={contWidth}/>))}
         </div>
-        <button className="news__btn news__btn-next">
+        <button className="news__btn news__btn-next" onClick={() => scroll(contWidth/3 + 20)}>
           <img src={nextBtn} alt="" />
         </button>
       </div>
