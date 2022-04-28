@@ -1,52 +1,37 @@
 import React, { useState, useEffect } from "react";
 import "./Search.scss";
-import mockData from "../../assets/json/mockData.json";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
+import { useDispatch } from "react-redux";
+import { filterData } from "../../redux/searchSlice";
 
-function Search({ setRecords,setIsTwoLetters }) {
+function Search({ setIsTwoLetters }) {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-  const data = mockData.data.map((item, i) => {
-    return {
-      id: i + 1,
-      name: item[0],
-      company: item[1],
-      email: item[2],
-      date: item[3],
-      city: item[4],
-    };
-  });
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
-    if(e.target.value.length >= 2){
-      console.log(e.target.value);
+    if (e.target.value.length >= 2) {
       setIsTwoLetters(true);
-    }else{
+    } else {
       setIsTwoLetters(false);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchTerm(e.target.value);
     navigate("/list");
   };
 
   useEffect(() => {
     if (searchTerm) {
-      const filteredData = data.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setRecords(filteredData);
-    } else {
-      setRecords([]);
+      dispatch(filterData(searchTerm));
     }
   }, [searchTerm]);
 
   return (
-    <form className="search" onSubmit={handleSubmit}>
+    <form className="search" onSubmit={handleSubmit} value={searchTerm}>
       <input
         type="text"
         className="search__input"

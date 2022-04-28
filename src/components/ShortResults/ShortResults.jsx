@@ -1,11 +1,12 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import { useSelector } from "react-redux";
 import ListItem from "../ListItem/ListItem";
 import "./ShortResults.scss";
 
-function ShortResults({ records }) {
+function ShortResults() {
 
-
+  const records = useSelector(state => state.search.data);
 
   return (
     <div className="short-results">

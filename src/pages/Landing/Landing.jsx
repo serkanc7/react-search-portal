@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../../components/Button/Button";
 import "./Landing.scss";
 import Logo from "../../assets/img/logo.png";
@@ -6,10 +6,11 @@ import Search from "../../components/Search/Search";
 import ShortResults from "../../components/ShortResults/ShortResults";
 import News from "../../components/News/News";
 import Footer from "../../components/Footer/Footer";
+import {useSelector} from "react-redux";
 
-function Landing({ records, setRecords }) {
+function Landing({isTwoLetters,setIsTwoLetters }) {
 
-  const [isTwoLetters, setIsTwoLetters] = useState(false);
+  const records = useSelector(state => state.search.data);
 
   return (
     <main className="landing">
@@ -22,8 +23,8 @@ function Landing({ records, setRecords }) {
           <div className="landing__logo-text">Search app</div>
         </div>
         <h1 className="landing__title">Find in records</h1>
-        <Search setRecords={setRecords} setIsTwoLetters={setIsTwoLetters} />
-        {isTwoLetters && records.length > 0 && <ShortResults records={records}/>}
+        <Search setIsTwoLetters={setIsTwoLetters} />
+        {isTwoLetters && records.length > 0 && <ShortResults/>}
       </div>
       <News />
       <Footer/>
