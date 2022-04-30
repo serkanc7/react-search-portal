@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    justify-content: space-evenly;
+
+    &__logo{
+        margin-right: 35px;
+    }
+
+    &__button{
+        margin-left: 100px;
+    }
+}

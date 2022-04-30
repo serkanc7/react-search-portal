@@ -1,0 +1,36 @@
+@import '../../assets/scss/variables';
+
+.results{
+    display: flex;
+
+    &__items{
+        width: 725px;
+    }
+}
+
+.order{
+    &__categories{
+        display: flex;
+        flex-direction: column;
+        box-shadow: 4px 6px 12px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        border: 1px solid $order-border-color;
+        padding: 10px;
+
+    }
+
+    &__button{
+        border: none;
+        padding: 5px;
+        background: none;
+        text-align: left;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        &:hover{
+            background-color: $order-hover-bg-color;
+            color: $order-hover-text-color;
+        }
+    }
+}

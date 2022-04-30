@@ -1,45 +1,61 @@
 import React, { useState, useEffect } from "react";
 import "./Search.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
-import { filterData } from "../../redux/searchSlice";
+import { filterData,setIsTwoLetters } from "../../redux/searchSlice";
 
-function Search({ setIsTwoLetters }) {
+function Search({className}) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [urlPath, setUrlPath] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
+
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     if (e.target.value.length >= 2) {
-      setIsTwoLetters(true);
+      dispatch(setIsTwoLetters(true));
     } else {
-      setIsTwoLetters(false);
+      dispatch(setIsTwoLetters(false));
     }
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/list");
+    dispatch(filterData(searchTerm));
+    if(location.pathname === "/"){
+      navigate("/list");
+    }
   };
 
   useEffect(() => {
-    if (searchTerm) {
+    setUrlPath(location.pathname);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (searchTerm && urlPath==="/") {
       dispatch(filterData(searchTerm));
     }
-  }, [searchTerm]);
+  }, [searchTerm,urlPath,dispatch]);
+
+
 
   return (
-    <form className="search" onSubmit={handleSubmit} value={searchTerm}>
-      <input
+    
+    <form className="search" onSubmit={handleSubmit}value={searchTerm}>
+     <input
         type="text"
-        className="search__input"
+        className={className}
         value={searchTerm}
         onChange={handleChange}
       />
       <Button buttonText="Search" />
     </form>
+
+    
   );
 }
 

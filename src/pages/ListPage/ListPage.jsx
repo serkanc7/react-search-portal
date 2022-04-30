@@ -3,10 +3,10 @@ import Header from "../../components/Header/Header";
 import Results from "../../components/Results/Results";
 import "./ListPage.scss";
 
-function ListPage({ setIsTwoLetters  }) {
+function ListPage() {
   return (
-    <div>
-      <Header setIsTwoLetters={setIsTwoLetters}/>
+    <div className="listpage">
+      <Header/>
       <Results />
     </div>
   );

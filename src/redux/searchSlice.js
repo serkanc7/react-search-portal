@@ -14,6 +14,7 @@ const formatedData = mockData.data.map((item, i) => {
 
 const initialState = {
   data: [],
+  isTwoLetters: false,
 };
 
 export const searchSlice = createSlice({
@@ -26,10 +27,13 @@ export const searchSlice = createSlice({
       );
       state.data = filteredData;
     },
+    setIsTwoLetters: (state, {payload}) => {
+        state.isTwoLetters = payload;
+    }
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { filterData } = searchSlice.actions;
+
+export const { filterData,setIsTwoLetters } = searchSlice.actions;
 
 export default searchSlice.reducer;
