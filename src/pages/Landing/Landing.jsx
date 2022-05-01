@@ -24,7 +24,7 @@ function Landing() {
           <div className="landing__logo-text">Search app</div>
         </div>
         <h1 className="landing__title">Find in records</h1>
-        <Search />
+        <Search className="search__input-home"/>
         {isTwoLetters && records.length > 0 && <ShortResults/>}
       </div>
       <News />

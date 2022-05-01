@@ -3,10 +3,18 @@
 .search {
     
 
-    &__input {
+    &__input-home {
         border-radius: 8px;
         height: 48px;
         width: 646px;
+        border: 2px solid $search-border-color;
+        margin-right: 11px;
+    }
+
+    &__input-list{
+        border-radius: 8px;
+        height: 46px;
+        width: 509px;
         border: 2px solid $search-border-color;
         margin-right: 11px;
     }

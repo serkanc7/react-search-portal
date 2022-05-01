@@ -1,25 +1,39 @@
 @import '../../assets/scss/variables';
 
-.results{
+.results {
     display: flex;
+    margin-top: 50px;
 
-    &__items{
+    &__items {
         width: 725px;
+        margin-top: 20px;
     }
 }
 
-.order{
-    &__categories{
+.order {
+    &__categories {
         display: flex;
         flex-direction: column;
         box-shadow: 4px 6px 12px 4px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
         border: 1px solid $order-border-color;
         padding: 10px;
+        margin-top: 15px;
 
     }
 
-    &__button{
+    &__title {
+        padding: 5px;
+        color: $order-title-text-color;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        border-radius: 8px;
+        margin-right: 40px;
+        border: 1px solid #414141;
+    }
+
+    &__button {
         border: none;
         padding: 5px;
         background: none;
@@ -28,7 +42,8 @@
         font-size: 14px;
         font-weight: 500;
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             background-color: $order-hover-bg-color;
             color: $order-hover-text-color;
         }

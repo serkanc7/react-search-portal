@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./Search.scss";
 import { useNavigate, useLocation} from "react-router-dom";
 import Button from "../Button/Button";
-import { useDispatch } from "react-redux";
-import { filterData,setIsTwoLetters } from "../../redux/searchSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { filterData,setIsTwoLetters, setSearchText} from "../../redux/searchSlice";
 
 function Search({className}) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [urlPath, setUrlPath] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-
+  const searchText = useSelector((state) => state.search.searchText);
+  const [searchTerm, setSearchTerm] = useState(searchText);
+  const [urlPath, setUrlPath] = useState("");
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -28,6 +28,7 @@ function Search({className}) {
     dispatch(filterData(searchTerm));
     if(location.pathname === "/"){
       navigate("/list");
+      dispatch(setSearchText(searchTerm));
     }
   };
 
@@ -38,6 +39,7 @@ function Search({className}) {
   useEffect(() => {
     if (searchTerm && urlPath==="/") {
       dispatch(filterData(searchTerm));
+      dispatch(setSearchText(searchTerm));
     }
   }, [searchTerm,urlPath,dispatch]);
 
