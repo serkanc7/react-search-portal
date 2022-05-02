@@ -7,16 +7,18 @@ function Pagination({pages}) {
 
   const dispatch = useDispatch();
   const numOfPages = [];
-  console.log(numOfPages);
+  
+
 
   for (let i = 1; i <= pages; i++) {
     numOfPages.push(i);
   }
 
   const [currentButton, setCurrentButton] = useState(1);
-  console.log(currentButton);
+  
 
   useEffect(() => {
+
     dispatch(setCurrentPage(currentButton));
   },[currentButton,dispatch])
 

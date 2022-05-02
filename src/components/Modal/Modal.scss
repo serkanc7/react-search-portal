@@ -1,0 +1,47 @@
+@import '../../assets/scss/variables';
+
+.modal {
+    position: fixed;
+    bottom: 24px;
+    right: 17px;
+    display: flex;
+    align-items: center;
+    width: 375px;
+    background-color: $modal-bg-color;
+    padding: 30px 20px 20px 20px;
+    border-radius: 8px;
+
+    &__info {
+        color: $modal-text-color;
+    }
+
+    &__title {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 13px;
+        margin-top: 12px;
+    }
+
+    &__err {
+        color: $modal-btn-text-color;
+        background-color: $modal-btn-bg-color;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 8px 16px;
+        margin-left: 10px;
+        border-radius: 24px;
+    }
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+
+}

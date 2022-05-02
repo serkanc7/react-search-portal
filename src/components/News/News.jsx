@@ -15,6 +15,23 @@ function News() {
     setContWidth(newWidth);
   };
 
+  const newsData = [{
+    title:'A Plan to Rebuild the Bus Terminal Everyone Loves to Hate',
+    time: '1',
+    author: 'Troy Corlson'
+  },{
+    title:'A Plan to Rebuild the Bus Terminal Everyone Loves to Hate',
+    time: '2',
+    author: 'Jane Corlson'
+  },{
+    title:'A Plan to Rebuild the Bus Terminal Everyone Loves to Hate',
+    time: '3',
+    author: 'Joe Corlson'
+  },{
+    title:'A Plan to Rebuild the Bus Terminal Everyone Loves to Hate',
+    time: '4',
+    author: 'Joe Doe'
+  }]
   
 
   useEffect(() => {
@@ -41,7 +58,7 @@ function News() {
           <img src={prevBtn} alt=""/>
         </button>
         <div ref={ref} className="news__container">
-          {[0,1,2,3].map((item) => (<NewsCard key={item} padding contWidth={contWidth}/>))}
+          {newsData.map((item) => (<NewsCard key={item.time} title={item.title} time={item.time} author={item.author}  contWidth={contWidth}/>))}
         </div>
         <button className="news__btn news__btn-next" onClick={() => scroll(contWidth/3 + 20)}>
           <img src={nextBtn} alt="" />

@@ -1,6 +1,8 @@
 import Landing from "./pages/Landing/Landing";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ListPage from "./pages/ListPage/ListPage";
+import AddPage from "./pages/AddPage/AddPage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/list" element={<ListPage />} />
+          <Route path="/add" element={<AddPage />} />
         </Routes>
       </Router>
     </div>

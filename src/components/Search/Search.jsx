@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./Search.scss";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { filterData,setIsTwoLetters, setSearchText} from "../../redux/searchSlice";
+import {
+  filterData,
+  setIsTwoLetters,
+  setSearchText,
+} from "../../redux/searchSlice";
 
-function Search({className}) {
+function Search({ className, SearchSvg }) {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -22,13 +26,14 @@ function Search({className}) {
     }
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(filterData(searchTerm));
-    if(location.pathname === "/"){
-      navigate("/list");
-      dispatch(setSearchText(searchTerm));
+    if (searchTerm) {
+      dispatch(filterData(searchTerm));
+      if (location.pathname === "/") {
+        navigate("/list");
+        dispatch(setSearchText(searchTerm));
+      }
     }
   };
 
@@ -37,27 +42,25 @@ function Search({className}) {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (searchTerm && urlPath==="/") {
+    if (searchTerm && urlPath === "/") {
       dispatch(filterData(searchTerm));
       dispatch(setSearchText(searchTerm));
     }
-  }, [searchTerm,urlPath,dispatch]);
-
-
+  }, [searchTerm, urlPath, dispatch]);
 
   return (
-    
-    <form className="search" onSubmit={handleSubmit}value={searchTerm}>
-     <input
-        type="text"
-        className={className}
-        value={searchTerm}
-        onChange={handleChange}
-      />
+    <form className="search" onSubmit={handleSubmit} value={searchTerm}>
+      <div className={className}>
+        <img className="search__svg" src={SearchSvg} alt="" />
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleChange}
+          required={true}
+        />
+      </div>
       <Button buttonText="Search" />
     </form>
-
-    
   );
 }
 

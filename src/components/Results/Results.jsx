@@ -17,6 +17,7 @@ function Results() {
   const currentRecords = records.slice(indexOfFirstRecord,indexOfLastRecord);
   const totalPagesNum = Math.ceil(records.length/recordsPerPage);
 
+
   return (
     <div className="results">
       <div className="results__items">
@@ -30,7 +31,7 @@ function Results() {
           className="order__title"
           onClick={() => setCategoryOpened((prevShow) => !prevShow)}
         >
-          &#8595;&#8593; Order By
+          &#8595;&#8593;<span>Order By</span>
         </button>
         {categoryOpened && (
           <div
@@ -40,20 +41,20 @@ function Results() {
           >
             <button
               className="order__name-asc order__button"
-              onClick={() => dispatch(sortData("asc"))}
+              onClick={() => dispatch(sortData({cate:'name',order:'asc'}))}
             >
               Name ascending
             </button>
             <button
               className="order__name-desc order__button"
-              onClick={() => dispatch(sortData("desc"))}
+              onClick={() => dispatch(sortData({cate:'name',order:'desc'}))}
             >
               Name descending
             </button>
-            <button className="order__year-asc order__button">
+            <button className="order__year-asc order__button" onClick={() => dispatch(sortData({cate:'formatedDate',order:'asc'}))}>
               Year ascending
             </button>
-            <button className="order__year-desc order__button">
+            <button className="order__year-desc order__button" onClick={() => dispatch(sortData({cate:'formatedDate',order:'desc'}))}>
               Year descending
             </button>
           </div>

@@ -29,7 +29,9 @@ function ListItem({ record }) {
         </div>
 }
       </div>
-      <hr className={urlPath === "/" ? 'list-item__home-hr' : ""}/>
+      
+      <hr className={urlPath === "/" ? 'list-item__home-hr list-item__hr' : "list-item__hr"}/>
+
     </>
   );
 }

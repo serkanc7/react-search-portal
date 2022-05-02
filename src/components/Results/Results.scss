@@ -3,6 +3,7 @@
 .results {
     display: flex;
     margin-top: 50px;
+    margin-left: 150px;
 
     &__items {
         width: 725px;
@@ -11,6 +12,7 @@
 }
 
 .order {
+    margin-left: 25px;
     &__categories {
         display: flex;
         flex-direction: column;
@@ -31,6 +33,11 @@
         border-radius: 8px;
         margin-right: 40px;
         border: 1px solid #414141;
+        cursor: pointer;
+
+        span{
+            margin-left: 10px;
+        }
     }
 
     &__button {

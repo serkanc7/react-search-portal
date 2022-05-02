@@ -1,0 +1,32 @@
+@import '../../assets/scss/variables';
+
+.addpage{
+    display: flex;
+    align-items: flex-start;
+    margin-left: 100px;
+    margin-top: 30px;
+
+    &__link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    &__title{
+        color: $add-title-color;
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+
+    &__container{
+        margin-left: 40px;
+        width: 590px;
+    }
+
+    &__button{
+        margin-top: 50px;
+        text-align: right;
+    }
+
+}

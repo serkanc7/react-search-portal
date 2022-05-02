@@ -13,9 +13,9 @@ function Header() {
       </Link>
 
       <Search className="search__input-list" />
-      <div className="header__button">
+      <Link to="/add" className="header__button">
         <Button buttonText="Add New Record" />
-      </div>
+      </Link>
     </header>
   );
 }
